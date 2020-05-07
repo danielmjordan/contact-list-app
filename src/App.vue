@@ -30,10 +30,18 @@
             v-for="contact in filteredContacts"
             :key="contact.id"
             @remove-contact="removeContact"
+            @view-contact="viewContactDetails"
             :contact="contact"
           />
         </v-col>
       </v-row>
+
+      <v-dialog v-model="showDialog" width="700">
+        <ContactCardDetail
+          @close-dialog="showDialog = false"
+          :contact="currentContact"
+        />
+      </v-dialog>
 
       <v-snackbar v-model="snackbar" :timeout="timeout" bottom left>
         {{ message }}
@@ -47,6 +55,7 @@
 
 <script>
 import ContactCard from '@/components/ContactCard';
+import ContactCardDetail from '@/components/ContactCardDetail';
 import Form from '@/components/Form';
 import sampleData from '@/data/sampleData.js';
 
@@ -54,14 +63,17 @@ export default {
   name: 'App',
   components: {
     ContactCard,
+    ContactCardDetail,
     Form,
   },
 
   data: () => ({
     contacts: sampleData,
+    currentContact: null,
     query: '',
     message: '',
     showForm: false,
+    showDialog: false,
     snackbar: false,
     timeout: 2500,
   }),
@@ -79,12 +91,23 @@ export default {
       this.message = `${$event.firstName} has been removed from your contacts`;
       this.snackbar = true;
     },
+
+    viewContactDetails(contact) {
+      this.currentContact = contact;
+      this.showDialog = true;
+    },
   },
 
   computed: {
     filteredContacts() {
+      const formattedQuery = this.query.toLowerCase();
       return this.contacts.filter(contact => {
-        return contact.lastName.toLowerCase().match(this.query.toLowerCase());
+        return (
+          contact.company.toLowerCase().match(formattedQuery) ||
+          `${contact.firstName} ${contact.lastName}`
+            .toLowerCase()
+            .match(formattedQuery)
+        );
       });
     },
   },

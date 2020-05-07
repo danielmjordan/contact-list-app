@@ -64,7 +64,6 @@ import { v4 as uuidv4 } from 'uuid';
 export default {
   data: () => ({
     valid: false,
-    id: uuidv4(),
     firstName: '',
     lastName: '',
     nameRules: [
@@ -94,7 +93,8 @@ export default {
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
-        const { id, firstName, lastName, email, company, notes } = this;
+        const id = uuidv4();
+        const { firstName, lastName, email, company, notes } = this;
         this.$emit('add-contact', {
           id,
           firstName,
