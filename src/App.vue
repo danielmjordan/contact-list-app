@@ -6,7 +6,7 @@
       >
       <v-spacer></v-spacer>
       <v-btn @click="showForm = !showForm" text>
-        {{ showForm ? 'hide form' : 'Add new contact' }}
+        {{ showForm ? 'View contacts' : 'Add contact' }}
       </v-btn>
     </v-app-bar>
 
