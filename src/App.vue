@@ -13,7 +13,7 @@
     <v-content>
       <v-row v-if="showForm">
         <v-col cols="12" class="mx-auto">
-          <Form @add-contact="addContact" />
+          <Form @add-contact="addContact" @cancel-form="showForm = false" />
         </v-col>
       </v-row>
 

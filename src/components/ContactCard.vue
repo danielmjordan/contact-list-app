@@ -22,8 +22,12 @@
       </v-card-subtitle>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn @click="editContact">EDIT</v-btn>
-        <v-btn @click="removeContact">Remove</v-btn>
+        <v-btn @click="editContact" icon>
+          <v-icon>mdi-pencil</v-icon>
+        </v-btn>
+        <v-btn @click="removeContact" icon>
+          <v-icon>mdi-delete</v-icon>
+        </v-btn>
       </v-card-actions>
       <v-divider></v-divider>
     </v-card>
@@ -48,7 +52,7 @@ export default {
 
   methods: {
     editContact() {
-      console.log('clicked');
+      this.$emit('edit-contact', this.contact);
     },
     removeContact() {
       this.$emit('remove-contact', this.contact);

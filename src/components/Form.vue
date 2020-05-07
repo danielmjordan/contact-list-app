@@ -36,22 +36,19 @@
 
           <v-textarea
             v-model="notes"
-            :counter="100"
+            :counter="500"
             :rules="notesRules"
             label="Notes"
           ></v-textarea>
-
-          <v-spacer></v-spacer>
-          <v-btn
-            @click="submit"
-            :disabled="!valid"
-            color="success"
-            class="mr-4"
-          >
-            Add Contact
-          </v-btn>
         </v-form>
       </v-container>
+      <v-card-actions>
+        <v-btn @click="cancel">Cancel</v-btn>
+        <v-spacer></v-spacer>
+        <v-btn @click="submit" :disabled="!valid" color="success">
+          Add Contact
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-container>
 </template>
@@ -103,6 +100,10 @@ export default {
         });
         this.$refs.form.reset();
       }
+    },
+    cancel() {
+      this.$refs.form.reset();
+      this.$emit('cancel-form');
     },
   },
 };
