@@ -19,8 +19,10 @@
       <v-divider></v-divider>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn>EDIT</v-btn>
-        <v-btn @click="closeDialog">CLOSE</v-btn>
+        <v-btn icon><v-icon>mdi-pencil</v-icon></v-btn>
+        <v-btn @click="closeDialog" icon
+          ><v-icon>mdi-close-circle</v-icon></v-btn
+        >
       </v-card-actions>
     </v-container>
   </v-card>
