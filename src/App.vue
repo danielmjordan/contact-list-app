@@ -36,7 +36,7 @@
       </v-row>
 
       <v-snackbar v-model="snackbar" :timeout="timeout" bottom left>
-        Contact has been removed from list
+        {{ message }}
         <v-btn @click="snackbar = false" color="blue" text>
           Close
         </v-btn>
@@ -60,6 +60,7 @@ export default {
   data: () => ({
     contacts: sampleData,
     query: '',
+    message: '',
     showForm: false,
     snackbar: false,
     timeout: 2500,
@@ -69,10 +70,13 @@ export default {
     addContact($event) {
       this.contacts.unshift($event);
       this.showForm = false;
+      this.message = `${$event.firstName} has successfully been added to your contacts`;
+      this.snackbar = true;
     },
 
     removeContact($event) {
       this.contacts = this.contacts.filter(contact => contact.id !== $event.id);
+      this.message = `${$event.firstName} has been removed from your contacts`;
       this.snackbar = true;
     },
   },

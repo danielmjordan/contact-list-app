@@ -2,12 +2,17 @@
   <v-container>
     <v-card max-width="600" class="mx-auto" flat>
       <v-container class="pa-3">
-        <v-form ref="form" v-model="valid" lazy-validation @submit="submit">
+        <v-form
+          ref="form"
+          v-model="valid"
+          lazy-validation
+          @submit.prevent="submit"
+        >
           <v-text-field
             v-model="firstName"
             :counter="20"
             :rules="nameRules"
-            label="First name"
+            label="First name*"
             required
           ></v-text-field>
 
@@ -15,14 +20,14 @@
             v-model="lastName"
             :counter="20"
             :rules="nameRules"
-            label="Last name"
+            label="Last name*"
             required
           ></v-text-field>
 
           <v-text-field
             v-model="email"
             :rules="emailRules"
-            label="Email"
+            label="Email*"
             required
           ></v-text-field>
 
@@ -31,7 +36,6 @@
             :counter="20"
             :rules="companyRules"
             label="Company"
-            required
           ></v-text-field>
 
           <v-textarea
@@ -41,11 +45,12 @@
             label="Notes"
           ></v-textarea>
         </v-form>
+        <small>*indicates required field</small>
       </v-container>
       <v-card-actions>
         <v-btn @click="cancel">Cancel</v-btn>
         <v-spacer></v-spacer>
-        <v-btn @click="submit" :disabled="!valid" color="success">
+        <v-btn @click="submit" color="success">
           Add Contact
         </v-btn>
       </v-card-actions>
@@ -58,7 +63,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default {
   data: () => ({
-    valid: true,
+    valid: false,
     id: uuidv4(),
     firstName: '',
     lastName: '',
