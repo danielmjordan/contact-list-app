@@ -1,6 +1,8 @@
+import { uuid } from '@/utils/utils';
+
 const sampleData = [
   {
-    id: 1,
+    id: uuid(),
     firstName: 'John',
     lastName: 'Arnold',
     email: 'john@gmail.com',
@@ -9,7 +11,7 @@ const sampleData = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
-    id: 2,
+    id: uuid(),
     firstName: 'Fred',
     lastName: 'Becky',
     email: 'fred@gmail.com',
@@ -18,7 +20,7 @@ const sampleData = [
       'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
-    id: 3,
+    id: uuid(),
     firstName: 'BOB',
     lastName: 'Abrahmson',
     email: 'danieljordan@gmail.com',
@@ -27,7 +29,7 @@ const sampleData = [
       'Mattis enim ut tellus elementum sagittis. Blandit massa enim nec dui nunc. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Mauris ultrices eros in cursus turpis massa tincidunt.',
   },
   {
-    id: 4,
+    id: uuid(),
     firstName: 'Kyle',
     lastName: 'Johnson',
     email: 'danieljordan@gmail.com',
@@ -36,7 +38,7 @@ const sampleData = [
       'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
-    id: 5,
+    id: uuid(),
     firstName: 'MIKE',
     lastName: 'Johnson',
     email: 'danieljordan@gmail.com',

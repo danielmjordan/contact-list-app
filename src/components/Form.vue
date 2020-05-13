@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { v4 as uuidv4 } from 'uuid';
+import { uuid } from '@/utils/utils';
 
 export default {
   data: () => ({
@@ -93,7 +93,7 @@ export default {
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
-        const id = uuidv4();
+        const id = uuid();
         const { firstName, lastName, email, company, notes } = this;
         this.$emit('add-contact', {
           id,
