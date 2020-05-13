@@ -79,14 +79,11 @@ export default {
     company: '',
     companyRules: [
       value =>
-        (value && value.length <= 20) ||
-        'Company name must be less than 20 characters',
+        value.length <= 20 || 'Company name must be less than 20 characters',
     ],
     notes: '',
     notesRules: [
-      value =>
-        (value && value.length <= 500) ||
-        'Notes must be less than 500 characters',
+      value => value.length <= 500 || 'Notes must be less than 500 characters',
     ],
   }),
 

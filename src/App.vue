@@ -79,21 +79,24 @@ export default {
   }),
 
   methods: {
-    addContact($event) {
-      this.contacts.unshift($event);
+    addContact($contact) {
+      this.contacts.unshift($contact);
+      // this.$store.dispatch('ADD_CONTACT', $contact);
       this.showForm = false;
-      this.message = `${$event.firstName} has successfully been added to your contacts`;
+      this.message = `${$contact.firstName} has successfully been added to your contacts`;
       this.snackbar = true;
     },
 
-    removeContact($event) {
-      this.contacts = this.contacts.filter(contact => contact.id !== $event.id);
+    removeContact($contact) {
+      this.contacts = this.contacts.filter(
+        contact => contact.id !== $contact.id
+      );
       this.message = `${$event.firstName} has been removed from your contacts`;
       this.snackbar = true;
     },
 
-    viewContactDetails(contact) {
-      this.currentContact = contact;
+    viewContactDetails($contact) {
+      this.currentContact = $contact;
       this.showDialog = true;
     },
   },

@@ -12,7 +12,14 @@ const store = new Vuex.Store({
   state: {
     contacts,
   },
-  mutations: {},
+  mutations: {
+    ADD_CONTACT(state, contact) {
+      state.contacts = state.contacts.unshift(contact);
+    },
+    REMOVE_CONTACT(state, id) {
+      state.contacts = state.contacts.filter(contact => contact.id !== id);
+    },
+  },
   actions: {},
 });
 
