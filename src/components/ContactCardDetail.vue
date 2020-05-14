@@ -19,7 +19,7 @@
       <v-divider></v-divider>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn icon><v-icon>mdi-pencil</v-icon></v-btn>
+        <v-btn @click="editContact" icon><v-icon>mdi-pencil</v-icon></v-btn>
         <v-btn @click="closeDialog" icon
           ><v-icon>mdi-close-circle</v-icon></v-btn
         >
@@ -37,6 +37,9 @@ export default {
   methods: {
     closeDialog() {
       this.$emit('close-dialog');
+    },
+    editContact() {
+      this.$emit('edit-contact');
     },
   },
 };

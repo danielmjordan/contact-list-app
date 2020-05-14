@@ -13,7 +13,11 @@
     <v-content>
       <v-row v-if="showForm">
         <v-col cols="12" class="mx-auto">
-          <Form @add-contact="addContact" @cancel-form="showForm = false" />
+          <Form
+            @add-contact="addContact"
+            @cancel-form="showForm = false"
+            :contact="selectedContact"
+          />
         </v-col>
       </v-row>
 
@@ -29,6 +33,7 @@
           <ContactCard
             v-for="contact in filteredContacts"
             :key="contact.id"
+            @edit-contact="editContact"
             @remove-contact="removeContact"
             @view-contact="viewContactDetails"
             :contact="contact"
@@ -39,7 +44,8 @@
       <v-dialog v-model="showDialog" width="700">
         <ContactCardDetail
           @close-dialog="showDialog = false"
-          :contact="currentContact"
+          @edit-contact="editContact"
+          :contact="selectedContact"
         />
       </v-dialog>
 
@@ -58,6 +64,7 @@ import ContactCard from '@/components/ContactCard';
 import ContactCardDetail from '@/components/ContactCardDetail';
 import Form from '@/components/Form';
 import sampleData from '@/data/sampleData.js';
+import { mapState } from 'vuex';
 
 export default {
   name: 'App',
@@ -69,9 +76,9 @@ export default {
 
   data: () => ({
     contacts: sampleData,
-    currentContact: null,
-    query: '',
+    selectedContact: null,
     message: '',
+    query: '',
     showForm: false,
     showDialog: false,
     snackbar: false,
@@ -79,24 +86,30 @@ export default {
   }),
 
   methods: {
-    addContact($contact) {
-      this.contacts.unshift($contact);
-      // this.$store.dispatch('ADD_CONTACT', $contact);
+    addContact(contact) {
+      this.contacts.unshift(contact);
+      // this.$store.commit('ADD_CONTACT', $contact);
       this.showForm = false;
-      this.message = `${$contact.firstName} has successfully been added to your contacts`;
+      this.message = `${contact.firstName} has successfully been added to your contacts`;
       this.snackbar = true;
+    },
+
+    editContact(contact) {
+      this.showForm = true;
+      this.selectedContact = contact;
+      this.showDialog = false;
     },
 
     removeContact($contact) {
       this.contacts = this.contacts.filter(
         contact => contact.id !== $contact.id
       );
-      this.message = `${$event.firstName} has been removed from your contacts`;
+      this.message = `${$contact.firstName} has been removed from your contacts`;
       this.snackbar = true;
     },
 
-    viewContactDetails($contact) {
-      this.currentContact = $contact;
+    viewContactDetails(contact) {
+      this.selectedContact = contact;
       this.showDialog = true;
     },
   },

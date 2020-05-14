@@ -2,6 +2,7 @@
   <v-container>
     <v-card max-width="600" class="mx-auto" flat>
       <v-container class="pa-3">
+        <p>{{ contact }}</p>
         <v-form
           ref="form"
           v-model="valid"
@@ -62,6 +63,16 @@
 import { uuid } from '@/utils/utils';
 
 export default {
+  props: {
+    contact: {
+      type: Object,
+      default: () => {
+        {
+          empty: true;
+        }
+      },
+    },
+  },
   data: () => ({
     valid: false,
     firstName: '',
@@ -79,11 +90,14 @@ export default {
     company: '',
     companyRules: [
       value =>
-        value.length <= 20 || 'Company name must be less than 20 characters',
+        (value && value.length <= 20) ||
+        'Company name must be less than 20 characters',
     ],
     notes: '',
     notesRules: [
-      value => value.length <= 500 || 'Notes must be less than 500 characters',
+      value =>
+        (value && value.length <= 500) ||
+        'Notes must be less than 500 characters',
     ],
   }),
 

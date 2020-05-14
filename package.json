@@ -1,5 +1,5 @@
 {
-  "name": "blank-slate",
+  "name": "contact-list",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "uuid": "^8.0.0",
     "vue": "^2.6.11",
     "vuetify": "^2.2.11",
     "vuex": "^3.1.3"
