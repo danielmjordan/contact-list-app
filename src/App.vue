@@ -16,7 +16,7 @@
           <Form
             @add-contact="addContact"
             @cancel-form="showForm = false"
-            :contact="selectedContact"
+            :populateData="selectedContact"
           />
         </v-col>
       </v-row>

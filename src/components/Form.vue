@@ -2,7 +2,6 @@
   <v-container>
     <v-card max-width="600" class="mx-auto" flat>
       <v-container class="pa-3">
-        <p>{{ contact }}</p>
         <v-form
           ref="form"
           v-model="valid"
@@ -10,7 +9,7 @@
           @submit.prevent="submit"
         >
           <v-text-field
-            v-model="firstName"
+            v-model="form.firstName"
             :counter="20"
             :rules="nameRules"
             label="First name*"
@@ -18,7 +17,7 @@
           ></v-text-field>
 
           <v-text-field
-            v-model="lastName"
+            v-model="form.lastName"
             :counter="20"
             :rules="nameRules"
             label="Last name*"
@@ -26,21 +25,21 @@
           ></v-text-field>
 
           <v-text-field
-            v-model="email"
+            v-model="form.email"
             :rules="emailRules"
             label="Email*"
             required
           ></v-text-field>
 
           <v-text-field
-            v-model="company"
+            v-model="form.company"
             :counter="20"
             :rules="companyRules"
             label="Company"
           ></v-text-field>
 
           <v-textarea
-            v-model="notes"
+            v-model="form.notes"
             :counter="500"
             :rules="notesRules"
             label="Notes"
@@ -64,7 +63,7 @@ import { uuid } from '@/utils/utils';
 
 export default {
   props: {
-    contact: {
+    populateData: {
       type: Object,
       default: () => {
         {
@@ -75,25 +74,27 @@ export default {
   },
   data: () => ({
     valid: false,
-    firstName: '',
-    lastName: '',
+    form: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      company: '',
+      notes: '',
+    },
     nameRules: [
       value => !!value || 'Name is required',
       value =>
         (value && value.length <= 20) || 'Name must be less than 10 characters',
     ],
-    email: '',
     emailRules: [
       value => !!value || 'Email is required',
       v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
     ],
-    company: '',
     companyRules: [
       value =>
         (value && value.length <= 20) ||
         'Company name must be less than 20 characters',
     ],
-    notes: '',
     notesRules: [
       value =>
         (value && value.length <= 500) ||
@@ -105,7 +106,7 @@ export default {
     submit() {
       if (this.$refs.form.validate()) {
         const id = uuid();
-        const { firstName, lastName, email, company, notes } = this;
+        const { firstName, lastName, email, company, notes } = this.form;
         this.$emit('add-contact', {
           id,
           firstName,
@@ -122,5 +123,11 @@ export default {
       this.$emit('cancel-form');
     },
   },
+
+  // created() {
+  //   if (!this.populateData.empty) {
+  //     this.form = this.populateData;
+  //   }
+  // },
 };
 </script>
