@@ -24,6 +24,14 @@
         ></v-text-field>
 
         <v-text-field
+          v-model.number="form.phone"
+          mask="phone"
+          :rules="phoneRules"
+          label="Phone number*"
+          required
+        ></v-text-field>
+
+        <v-text-field
           v-model="form.email"
           :rules="emailRules"
           label="Email*"
@@ -75,6 +83,7 @@ export default {
     form: {
       firstName: '',
       lastName: '',
+      phone: '',
       email: '',
       company: '',
       notes: '',
@@ -83,6 +92,12 @@ export default {
       value => !!value || 'Name is required',
       value =>
         (value && value.length <= 20) || 'Name must be less than 20 characters',
+    ],
+    phoneRules: [
+      value => !!value || 'Phone number is required',
+      value =>
+        /^[2-9]\d{2}-\d{3}-\d{4}$/.test(value) ||
+        'Please enter a valid phone number',
     ],
     emailRules: [
       value => !!value || 'Email is required',
