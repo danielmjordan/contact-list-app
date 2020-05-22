@@ -1,4 +1,4 @@
-<template>
+<template v-slot:activator="{ on }">
   <v-content>
     <v-card @click="viewContact" width="600" class="mx-auto ma-3" flat hover>
       <v-card-title>

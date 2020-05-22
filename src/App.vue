@@ -11,17 +11,15 @@
     </v-app-bar>
 
     <v-content>
-      <v-row v-if="showForm">
-        <v-col cols="12" class="mx-auto">
-          <Form
-            @add-contact="addContact"
-            @cancel-form="showForm = false"
-            :populateData="selectedContact"
-          />
-        </v-col>
-      </v-row>
+      <v-dialog v-model="showForm" width="700" persistent>
+        <Form
+          @add-contact="addContact"
+          @cancel-form="showForm = false"
+          :populateData="selectedContact"
+        />
+      </v-dialog>
 
-      <v-row v-else>
+      <v-row>
         <v-col cols="12" class="mx-auto ma-3">
           <v-card width="600" class="mx-auto" flat>
             <v-text-field
@@ -86,7 +84,6 @@ export default {
 
   methods: {
     addContact(contact) {
-      // this.contacts.unshift(contact);
       this.showForm = false;
       this.message = `${contact.firstName} has successfully been added to your contacts`;
       this.snackbar = true;

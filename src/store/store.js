@@ -20,7 +20,6 @@ const store = new Vuex.Store({
       state.contacts = state.contacts.filter(c => c.id !== contact.id);
     },
   },
-  actions: {},
 });
 
 export default store;

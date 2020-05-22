@@ -1,61 +1,59 @@
-<template>
-  <v-container>
-    <v-card max-width="600" class="mx-auto" flat>
-      <v-container class="pa-3">
-        <v-form
-          ref="form"
-          v-model="valid"
-          lazy-validation
-          @submit.prevent="submit"
-        >
-          <v-text-field
-            v-model="form.firstName"
-            :counter="20"
-            :rules="nameRules"
-            label="First name*"
-            required
-          ></v-text-field>
+<template v-slot:activator="{ on }">
+  <v-card class="mx-auto" flat>
+    <v-container class="pa-3">
+      <v-form
+        ref="form"
+        v-model="valid"
+        lazy-validation
+        @submit.prevent="submit"
+      >
+        <v-text-field
+          v-model="form.firstName"
+          :counter="20"
+          :rules="nameRules"
+          label="First name*"
+          required
+        ></v-text-field>
 
-          <v-text-field
-            v-model="form.lastName"
-            :counter="20"
-            :rules="nameRules"
-            label="Last name*"
-            required
-          ></v-text-field>
+        <v-text-field
+          v-model="form.lastName"
+          :counter="20"
+          :rules="nameRules"
+          label="Last name*"
+          required
+        ></v-text-field>
 
-          <v-text-field
-            v-model="form.email"
-            :rules="emailRules"
-            label="Email*"
-            required
-          ></v-text-field>
+        <v-text-field
+          v-model="form.email"
+          :rules="emailRules"
+          label="Email*"
+          required
+        ></v-text-field>
 
-          <v-text-field
-            v-model="form.company"
-            :counter="20"
-            :rules="companyRules"
-            label="Company"
-          ></v-text-field>
+        <v-text-field
+          v-model="form.company"
+          :counter="20"
+          :rules="companyRules"
+          label="Company"
+        ></v-text-field>
 
-          <v-textarea
-            v-model="form.notes"
-            :counter="500"
-            :rules="notesRules"
-            label="Notes"
-          ></v-textarea>
-        </v-form>
-        <small>*indicates required field</small>
-      </v-container>
-      <v-card-actions>
-        <v-btn @click="cancel">Cancel</v-btn>
-        <v-spacer></v-spacer>
-        <v-btn @click="submit" color="success">
-          Add Contact
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-container>
+        <v-textarea
+          v-model="form.notes"
+          :counter="500"
+          :rules="notesRules"
+          label="Notes"
+        ></v-textarea>
+      </v-form>
+      <small>*indicates required field</small>
+    </v-container>
+    <v-card-actions>
+      <v-btn @click="cancel">Cancel</v-btn>
+      <v-spacer></v-spacer>
+      <v-btn @click="submit" color="success">
+        Add Contact
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
