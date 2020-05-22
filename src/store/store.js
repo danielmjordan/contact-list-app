@@ -5,7 +5,7 @@ import sampleData from '@/data/sampleData';
 
 Vue.use(Vuex);
 
-const contacts = sampleData;
+const contacts = JSON.parse(localStorage.getItem('contacts')) || sampleData;
 
 const store = new Vuex.Store({
   plugins: [saveStatePlugin],
@@ -14,10 +14,10 @@ const store = new Vuex.Store({
   },
   mutations: {
     ADD_CONTACT(state, contact) {
-      state.contacts = state.contacts.unshift(contact);
+      state.contacts.unshift(contact);
     },
-    REMOVE_CONTACT(state, id) {
-      state.contacts = state.contacts.filter(contact => contact.id !== id);
+    REMOVE_CONTACT(state, contact) {
+      state.contacts = state.contacts.filter(c => c.id !== contact.id);
     },
   },
   actions: {},

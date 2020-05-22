@@ -107,14 +107,16 @@ export default {
       if (this.$refs.form.validate()) {
         const id = uuid();
         const { firstName, lastName, email, company, notes } = this.form;
-        this.$emit('add-contact', {
+        const contact = {
           id,
           firstName,
           lastName,
           email,
           company,
           notes,
-        });
+        };
+        this.$store.commit('ADD_CONTACT', contact);
+        this.$emit('add-contact', contact);
         this.$refs.form.reset();
       }
     },

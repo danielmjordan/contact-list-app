@@ -86,7 +86,7 @@ export default {
 
   methods: {
     addContact(contact) {
-      this.contacts.unshift(contact);
+      // this.contacts.unshift(contact);
       this.showForm = false;
       this.message = `${contact.firstName} has successfully been added to your contacts`;
       this.snackbar = true;
@@ -99,7 +99,6 @@ export default {
     },
 
     removeContact(contact) {
-      this.contacts = this.contacts.filter(c => c.id !== contact.id);
       this.message = `${contact.firstName} has been removed from your contacts`;
       this.snackbar = true;
     },

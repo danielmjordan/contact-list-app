@@ -33,6 +33,7 @@ export default {
       this.$emit('edit-contact', this.contact);
     },
     removeContact() {
+      this.$store.commit('REMOVE_CONTACT', this.contact);
       this.$emit('remove-contact', this.contact);
     },
     viewContact() {
