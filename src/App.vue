@@ -25,7 +25,7 @@
         <v-col cols="12" class="mx-auto ma-3">
           <v-card width="600" class="mx-auto" flat>
             <v-text-field
-              label="Search By Last Name"
+              label="Search contacts"
               v-model="query"
               prepend-icon="mdi-magnify"
             />
@@ -64,7 +64,6 @@ import ContactCard from '@/components/ContactCard';
 import ContactCardDetail from '@/components/ContactCardDetail';
 import Form from '@/components/Form';
 import sampleData from '@/data/sampleData.js';
-import { mapState } from 'vuex';
 
 export default {
   name: 'App',
@@ -88,7 +87,6 @@ export default {
   methods: {
     addContact(contact) {
       this.contacts.unshift(contact);
-      // this.$store.commit('ADD_CONTACT', $contact);
       this.showForm = false;
       this.message = `${contact.firstName} has successfully been added to your contacts`;
       this.snackbar = true;
@@ -100,11 +98,9 @@ export default {
       this.showDialog = false;
     },
 
-    removeContact($contact) {
-      this.contacts = this.contacts.filter(
-        contact => contact.id !== $contact.id
-      );
-      this.message = `${$contact.firstName} has been removed from your contacts`;
+    removeContact(contact) {
+      this.contacts = this.contacts.filter(c => c.id !== contact.id);
+      this.message = `${contact.firstName} has been removed from your contacts`;
       this.snackbar = true;
     },
 
