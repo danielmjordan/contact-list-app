@@ -1,20 +1,18 @@
 <template>
   <v-card>
-    <v-toolbar dark>
+    <v-toolbar color="primary">
       <v-toolbar-title class="ml-3">
         <strong>{{ `${contact.firstName} ${contact.lastName}` }}</strong>
+        <v-divider></v-divider>
+        <small v-if="contact.company">{{ contact.company }}</small>
       </v-toolbar-title>
     </v-toolbar>
     <v-container class="a-3">
       <v-card-title>
         {{ contact.email }}
       </v-card-title>
-
-      <v-card-text v-if="contact.company">
-        COMPANY: {{ contact.company }}
-      </v-card-text>
       <v-card-text v-if="contact.notes">
-        NOTES: {{ contact.notes }}
+        {{ contact.notes }}
       </v-card-text>
       <v-divider></v-divider>
       <v-card-actions>

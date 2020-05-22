@@ -1,12 +1,10 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-toolbar-title @click="showForm = false"
-        ><strong>CONTACT</strong>LIST</v-toolbar-title
-      >
+    <v-app-bar app color="primary">
+      <v-toolbar-title><strong>CONTACT</strong>LIST</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn @click="showForm = !showForm" text>
-        {{ showForm ? 'View contacts' : 'Add contact' }}
+      <v-btn @click="showForm = true" text>
+        Add contact
       </v-btn>
     </v-app-bar>
 

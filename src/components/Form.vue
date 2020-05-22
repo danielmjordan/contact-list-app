@@ -47,9 +47,9 @@
       <small>*indicates required field</small>
     </v-container>
     <v-card-actions>
-      <v-btn @click="cancel">Cancel</v-btn>
+      <v-btn @click="cancel" color="primary">Cancel</v-btn>
       <v-spacer></v-spacer>
-      <v-btn @click="submit" color="success">
+      <v-btn @click="submit" color="primary">
         Add Contact
       </v-btn>
     </v-card-actions>
