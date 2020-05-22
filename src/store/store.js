@@ -5,7 +5,7 @@ import sampleData from '@/data/sampleData';
 
 Vue.use(Vuex);
 
-const contacts = JSON.parse(localStorage.getItem('contacts')) || sampleData;
+const contacts = sampleData;
 
 const store = new Vuex.Store({
   plugins: [saveStatePlugin],

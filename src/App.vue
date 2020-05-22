@@ -64,6 +64,7 @@ import ContactCard from '@/components/ContactCard';
 import ContactCardDetail from '@/components/ContactCardDetail';
 import Form from '@/components/Form';
 import sampleData from '@/data/sampleData.js';
+import { mapState } from 'vuex';
 
 export default {
   name: 'App',
@@ -74,7 +75,6 @@ export default {
   },
 
   data: () => ({
-    contacts: sampleData,
     selectedContact: null,
     message: '',
     query: '',
@@ -111,6 +111,7 @@ export default {
   },
 
   computed: {
+    ...mapState(['contacts']),
     filteredContacts() {
       const formattedQuery = this.query.toLowerCase();
       return this.contacts.filter(contact => {
