@@ -34,22 +34,22 @@
           v-model="form.company"
           :counter="20"
           :rules="companyRules"
-          label="Company"
+          label="Company*"
         ></v-text-field>
 
         <v-textarea
           v-model="form.notes"
           :counter="500"
           :rules="notesRules"
-          label="Notes"
+          label="Notes*"
         ></v-textarea>
       </v-form>
       <small>*indicates required field</small>
     </v-container>
     <v-card-actions>
-      <v-btn @click="cancel" color="primary">Cancel</v-btn>
+      <v-btn @click="cancel" color="error">Cancel</v-btn>
       <v-spacer></v-spacer>
-      <v-btn @click="submit" color="primary">
+      <v-btn @click="submit" color="success">
         Add Contact
       </v-btn>
     </v-card-actions>
@@ -82,7 +82,7 @@ export default {
     nameRules: [
       value => !!value || 'Name is required',
       value =>
-        (value && value.length <= 20) || 'Name must be less than 10 characters',
+        (value && value.length <= 20) || 'Name must be less than 20 characters',
     ],
     emailRules: [
       value => !!value || 'Email is required',
